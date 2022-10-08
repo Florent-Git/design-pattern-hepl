@@ -105,6 +105,13 @@ class FileEntry {
 }
 ```
 
+### Méthode non utilisées ou inutiles
+
+Pour `FileEntry`, certaines méthodes de l'interface, tel que `getChildren` ou `addChild` est inutile. Pour respecter le principe du composite, ces méthodes ont étés définies comme tel:
+
+- La méthode `getChildren` renverra un tableau vide dans **tous les cas**.
+- La méthode `addChild` ou `removeChild` retournera **false** pour indiquer qu'un enfant n'as pas été ajouté 
+
 ## Lancement du projet:
 ```sh
 $ yarn
