@@ -17,7 +17,7 @@ export function IndexPage() {
                 <Tab label="Composite" value="1" />
                 <Tab label="Flyweight" value="2" />
             </Tabs>
-            <TabPanel className="!padding-0" value="1"><CompositePage/></TabPanel>
+            <TabPanel className="!p-0" value="1"><CompositePage/></TabPanel>
             <TabPanel value="2"><FlyweightPage/></TabPanel>
         </TabContext>
     )

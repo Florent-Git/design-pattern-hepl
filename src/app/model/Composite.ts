@@ -1,12 +1,26 @@
 export interface ZipEntry {
+    /**
+     * Returns the path of the entry in a UNIX-like path
+     * "/path/to/the/entry" <br>
+     * This path acts like an ID
+     */
     getPath(): string
 
+    /**
+     * Returns the uncompressed size of the entry
+     */
     getSize(): number
 
+    /**
+     * Returns the name of the entry
+     */
     getName(): string
 
+    /**
+     * Returns a list of potential children the entry could have
+     */
     getChildren(): ZipEntry[]
-
+    
     addChild(child: ZipEntry): boolean
 
     removeChild(child: ZipEntry): boolean
@@ -15,6 +29,10 @@ export interface ZipEntry {
 
     setParent(parent: ZipEntry): void
 
+    /**
+     * Recursively finds the child of the current entry
+     * @param path the absolute path of the children
+     */
     findChild(path: string): ZipEntry | undefined
 
     getIconType(): IconType
@@ -33,7 +51,6 @@ export class DirectoryEntry implements ZipEntry {
     }
     
     findChild(path: string): ZipEntry | undefined {
-        console.log({thisPath: this.getPath(), path});
         if (this.getPath() === path) return this;
         let child;
         this._children.forEach(c => {
