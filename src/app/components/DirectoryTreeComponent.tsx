@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../state/hooks";
 import { selectEntry } from "../state/zipBrowserSlice";
-import { IconType, ZipEntry } from "../model/Composite";
+import { ZipEntry } from "../model/Composite";
 import { TreeItem, TreeView } from "@mui/lab";
 import { ExpandLess, ExpandMore, Folder, InsertDriveFile } from "@mui/icons-material";
 import { TreeLabel } from "./TreeLabel";
