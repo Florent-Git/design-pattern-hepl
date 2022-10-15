@@ -112,6 +112,48 @@ Pour `FileEntry`, certaines méthodes de l'interface, tel que `getChildren` ou `
 - La méthode `getChildren` renverra un tableau vide dans **tous les cas**.
 - La méthode `addChild` ou `removeChild` retournera **false** pour indiquer qu'un enfant n'as pas été ajouté 
 
+
+
+## Flyweight
+
+Pour ce qui est du Design Pattern Flyweight, ce dernier fonctionne avec les classes suivantes:
+
+```mermaid
+classDiagram
+    direction LR
+    Human <-- UnoptimizedWarrior
+    Human <-- OptimizedWarrior
+    OptimizedWarrior <|-- "1" WarriorStats 
+
+    class Human {
+        <<interface>> Human
+        + getPosition() Position
+        + getName() string
+        + getAttack() number
+        + getDefense() number
+    }
+
+    class UnoptimizedWarrior {
+        - position: Position
+        - name: string
+        - attack: number
+        - defense: number
+    }
+
+    class OptimizedWarrior {
+        - position: Position
+    }
+
+    class WarriorStats {
+        <<Record>>
+        + name: string
+        + attack: number
+        + defense: number
+    }
+```
+
+Le principe est que la classe `WarriorStats` ne soit instanciée qu'une fois et seulement une fois. Ainsi, la classe est donc référenciée dans chacune des instances de `OptimizedWarrior` et cela réduit l'occupation des données répétées dans la mémoire.
+
 ## Lancement du projet:
 ```sh
 $ yarn
