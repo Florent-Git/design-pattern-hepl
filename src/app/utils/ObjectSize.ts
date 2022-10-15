@@ -1,33 +1,10 @@
-export function roughSizeOfObject( object: any ) {
+import sizeof from "object-sizeof";
+import { Human, WarriorStats } from "../model/Entities";
 
-    var objectList = [];
-    var stack = [ object ];
-    var bytes = 0;
-
-    while ( stack.length ) {
-        var value = stack.pop();
-
-        if ( typeof value === 'boolean' ) {
-            bytes += 4;
-        }
-        else if ( typeof value === 'string' ) {
-            bytes += value.length * 2;
-        }
-        else if ( typeof value === 'number' ) {
-            bytes += 8;
-        }
-        else if
-        (
-            typeof value === 'object'
-            && objectList.indexOf( value ) === -1
-        )
-        {
-            objectList.push( value );
-
-            for( var i in value ) {
-                stack.push( value[ i ] );
-            }
-        }
-    }
-    return bytes;
+export function getSizeOfHumans(humanArray: Human[]) {
+    return humanArray.length > 0 && humanArray[0].getName() === "Unoptimized Warrior"
+        ? humanArray.map(h => sizeof(h))
+            .reduce((a, b) => a + b, 0)
+        : humanArray.map(h => sizeof(h))
+            .reduce((a, b) => a + b, 0) - (sizeof(WarriorStats.getInstance()) * (humanArray.length - 1))
 }

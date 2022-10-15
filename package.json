@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@monaco-editor/react": "^4.4.6",
     "@mui/icons-material": "^5.10.6",
     "@mui/lab": "^5.0.0-alpha.101",
     "@mui/material": "^5.10.7",
@@ -14,6 +15,8 @@
     "autoprefixer": "^10.4.12",
     "filesize": "^10.0.5",
     "jszip": "^3.10.1",
+    "monaco-editor": "^0.34.0",
+    "object-sizeof": "^1.6.3",
     "postcss": "^8.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
